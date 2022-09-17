@@ -1,7 +1,21 @@
 import data from '../mockdata.json';
-import React, { useState } from 'react';
+import { useEffect, useRef, useState } from "react";
+import {
+  Container,
+  SearchInput,
+  IconRightArrow,
+  IconMagnifyingGlass
+} from "./styles";
 
 function Search() {
+  const targetRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const showSearchInput = isHovered || isFocused;
+
+  useEffect(() => {
+    targetRef.current.value = "";
+  }, [showSearchInput]);
 
   const [searchShow, setSearchShow] = useState(false);
   const [query, setQuery] = useState("")
@@ -42,10 +56,21 @@ function Search() {
 
   return (
     <div>
-      <form id="content">
-        <input type="text" name="input" className="input" id="search-input" onChange={handleChange} />
-        <button type="reset" className="search" id="search-btn" />
-      </form>
+      <Container
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      hover={showSearchInput}
+    >
+      <SearchInput ref={targetRef} showSearchInput={showSearchInput} onChange={handleChange}/>
+      {console.log(query)}
+      {showSearchInput ? <IconRightArrow /> : <IconMagnifyingGlass />}
+    </Container>
+
+      {/* <form id="content">
+        <input type="text" name="input" className="input" id="search-input"  />
+      </form> */}
       {searchShow &&
         data.filter(entry => {
           if (query === '') {

@@ -1,5 +1,4 @@
 import cat from './cat.svg';
-import './App.css';
 import Search from './components/Search';
 
 function App() {
@@ -14,6 +13,7 @@ function App() {
         <h1>
           Let's figure this out
         </h1>
+        <input></input>
       </header>
 
 

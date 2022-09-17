@@ -15,7 +15,7 @@ Let's figure this out together! Options for
 
 ### Frontend
 
-In a new terminal session, navigate to the `code/frontend/` directory. Create a `.env` file with the necessary environment variables. Run the following commands to start the frontend application:
+In a new terminal session, navigate to the `code/frontend/` directory. 
 
 ```shell
 $ npm install

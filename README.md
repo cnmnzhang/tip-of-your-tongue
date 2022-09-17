@@ -21,3 +21,5 @@ In a new terminal session, navigate to the `code/frontend/` directory.
 $ npm install
 $ npm start
 ```
+
+cat logo from [freesvg](https://freesvg.org/cat-silhouette-vector)

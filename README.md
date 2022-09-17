@@ -23,13 +23,26 @@ $ npm start
 ```
 
 ### Backend
-To run the backend locally, navigate to the `code/backend/` directory and export the script in the root directory `base.py`
+To run the backend locally, navigate to the `code/backend/` directory. Create a virtual environment and install flask and python-dotenv
 
 
 ```shell
 $ cd code/flask-backend
-$ pipenv shell
-$ export FLASK_APP=base.py
+$ python3 -m venv env
+$ pip install flask
+$ pip install python-dotenv
+```
+
+Create a file called `.flaskenv` and paste the following lines
+```
+FLASK_APP=base.py
+FLASK_ENV=development
+```
+
+
+Run the back end
+```
+$ npm run start-backend
 ```
 
 cat logo from [freesvg](https://freesvg.org/cat-silhouette-vector)

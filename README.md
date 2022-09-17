@@ -45,4 +45,10 @@ Run the back end
 $ npm run start-backend
 ```
 
+To work with spacy vectors, you need to download the vectors (after installing spacy):
+```shell
+$ python -m spacy download en_core_web_lg
+```
+
 cat logo from [freesvg](https://freesvg.org/cat-silhouette-vector)
+

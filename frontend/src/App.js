@@ -1,23 +1,50 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import cat from './cat.svg';
 import './App.css';
+// import Search from './components/Search';
+import data from './mockdata.json'
 
 function App() {
+
+  const [query, setQuery] = useState("")
+
+  function search() {
+    const filteredData = data;
+    return (
+      <div>
+        {
+          filteredData.filter(entry => {
+            if (query === '') {
+              return entry;
+            } else if (entry.word.toLowerCase().includes(query.toLowerCase())) {
+              return entry;
+            }
+          }).map((entry) => (
+            <div key={entry.id}>
+              <p>{entry.word}</p>
+            </div>
+          ))
+        }
+      </div>
+    )
+
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={cat} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Cat got your ...
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          Let's figure this out
+        </h1>
       </header>
+
+      <body>
+
+        <input placeholder="Enter Post Title" onChange={event => setQuery(event.target.value)}/>
+      </body>
     </div>
   );
 }

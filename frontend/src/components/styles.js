@@ -21,7 +21,7 @@ export const Container = styled.div`
   ${({ hover }) =>
     hover &&
     css`
-      width: 50%;
+      width: 50px;
       -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
       box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
       border: 4px solid #00adb5;

@@ -1,4 +1,4 @@
-const IconArrorRight = (props) => (
+const IconRightArrow = (props) => (
     <svg
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
@@ -10,5 +10,5 @@ const IconArrorRight = (props) => (
     </svg>
   );
   
-  export default IconArrorRight;
+  export default IconRightArrow;
   

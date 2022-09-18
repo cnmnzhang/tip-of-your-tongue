@@ -22,7 +22,7 @@ code {
   pointer-events: none;
   position: absolute;
   z-index: 2;
-  margin-top: 10vmin;
+  margin-top: 25vmin;
   left: 10vmin;
   opacity: 0.2;
 }
@@ -34,7 +34,8 @@ code {
 } */
 
 .App-header {
-  height: 60vh;
+  padding: 10vh;
+  height: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +65,7 @@ p {
 }
 
 .App-body {
-  height: 40vh;
+  height: 70vh;
   width: 100;
   display: flex;
   flex-direction: column;

@@ -36,9 +36,6 @@ function App() {
         <Search />
 
 
-      <p>
-        ... type 'reset' if prompt is being confusing ...
-      </p>
 
 
       <Audio />

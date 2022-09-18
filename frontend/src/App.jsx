@@ -10,18 +10,22 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={cat} className="App-logo" alt="logo" />
+        <div className="App-text">
+
         <p>
-          Cat got your ...
+          Cat got your tongue?
         </p>
         <h1>
-          Let's figure this out
+          Tell me what you're thinking
         </h1>
-        <Audio />
 
-        <Search />
+        </div>
       </header>
 
       <div className="App-body">
+        <Audio />
+
+        <Search />
 
 
       </div>

@@ -42,6 +42,11 @@ code {
   color: #61dafb;
 }
 
+.App-audio {
+  margin: 10px;
+
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import cat from './cat.svg';
 import Search from './components/Search';
+import Audio from './components/Audio';
 import axios from "axios";
 
 
@@ -38,6 +39,7 @@ function App() {
         <h1>
           Let's figure this out
         </h1>
+        <Audio />
         <input></input>
       </header>
 

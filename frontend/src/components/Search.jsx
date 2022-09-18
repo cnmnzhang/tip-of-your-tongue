@@ -20,20 +20,38 @@ function Search() {
     targetRef.current.value = "";
   }, [showSearchInput]);
 
-  const [searchShow, setSearchShow] = useState(false);
   const [query, setQuery] = useState("")
   const [result, setResult] = useState("")
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    function getIntro() {
+      axios({
+        method: "GET",
+        url: `http://127.0.0.1:5000/`,
+      })
+        .then((response) => {
+  
+          const res = response.data
+          setResult(res)
+        }).catch((error) => {
+          if (error.response) {
+            console.log(error.response)
+            console.log(error.response.status)
+            console.log(error.response.headers)
+          }
+        })
+    };
+
+    getIntro();
+
+    setResult(["Can you briefly attempt to define the word?", "Enter '?' if you are unsure."])
+  }, []);
+
 
   const handleChange = e => {
     setQuery(e.target.value);
 
-    if (e.target.value === "") {
-      setSearchShow(false);
-    }
-    else {
-      setSearchShow(true);
-
-    }
   };
 
   // new line start
@@ -55,11 +73,15 @@ function Search() {
         }
       })
   };
-  //end of new line 
 
 
   return (
     <div>
+        
+          <div>
+            <Response message={result.message} next={result.next}/>
+          </div>
+
       <Container
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -81,14 +103,7 @@ function Search() {
       </Container>
 
 
-      {searchShow &&
-        (
-          <div>
-            <Response message={result.message} next={result.next}/>
-          </div>
-        )
-
-      }
+      
 
     </div>
   );

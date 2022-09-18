@@ -32,6 +32,20 @@ part_of_speech_string = ''
 similar_word_count = 0
 
 
+@app.route("/")
+def start():
+
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        prompt=generate_completion_prompt(""),
+        temperature=0.6,
+    )
+    # return json.dumps(response.choices[0]["text"])
+    message = json.dumps(response.choices[0]["text"])[5:-1]
+    next = json.dumps(next_prompt)[1:-1]
+    string = {"message": message, "next": next}
+    return string
+
 @app.route("/<query>")
 def index(query):
 

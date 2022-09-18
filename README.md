@@ -37,6 +37,7 @@ Create a file called `.flaskenv` and paste the following lines
 ```
 FLASK_APP=base.py
 FLASK_ENV=development
+OPENAI_API_KEY=<insert key>
 ```
 
 

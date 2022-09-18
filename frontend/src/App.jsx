@@ -5,7 +5,6 @@ import Audio from './components/Audio';
 
 function App() {
 
-  // const API_KEY = process.env.CAT_API_KEY
 
   // useEffect(() => {
   //   fetch("https://api.thecatapi.com/v1/images/search")

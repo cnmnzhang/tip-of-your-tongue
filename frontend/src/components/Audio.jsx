@@ -1,6 +1,8 @@
 //import React from 'react'
 import React, { Component } from 'react' 
 import MicRecorder from 'mic-recorder-to-mp3'
+import { ReactComponent as Microphone} from '../icons/microphone.svg'
+import { ReactComponent as Stop} from '../icons/stop.svg'
 
 //const Audio = () => {
   const Mp3Recorder = new MicRecorder({ bitRate: 128 });
@@ -62,7 +64,7 @@ import MicRecorder from 'mic-recorder-to-mp3'
       
       // set link's href to point to the blob url
       link.href = blobURL;
-      link.download = "useraudio" + this.download_num + ".wav";
+      link.download = "useraudio" + this.download_num + ".mp3";
       this.download_num += 1;
 
       // append link to body
@@ -86,15 +88,14 @@ import MicRecorder from 'mic-recorder-to-mp3'
       return (
       <div class="Audio-class">
         <button onClick={this.start} disabled={this.state.isRecording}>
-          Record
+          
+        <Microphone />
         </button>
         <button onClick={this.stop} disabled={!this.state.isRecording}>
-          Stop
+          
+        <Stop />
         </button>
-        <div>
-        <audio className="audio-output" src={this.state.blobURL} controls="controls" />
-
-        </div>
+        <audio src={this.state.blobURL} controls="controls" />
       </div>
       )
     

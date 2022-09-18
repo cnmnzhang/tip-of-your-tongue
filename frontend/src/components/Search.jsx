@@ -63,7 +63,6 @@ function Search() {
 
   return (
     <div>
-
 <p>
         ... type 'reset' if prompt is being confusing ...
       </p>

@@ -1,4 +1,3 @@
-import data from '../mockdata.json';
 import { useEffect, useRef, useState } from "react";
 import {
   Container,
@@ -6,6 +5,8 @@ import {
   IconRightArrow,
   IconMagnifyingGlass
 } from "./styles";
+
+import axios from "axios";
 
 function Search() {
   const targetRef = useRef(null);
@@ -19,39 +20,39 @@ function Search() {
 
   const [searchShow, setSearchShow] = useState(false);
   const [query, setQuery] = useState("")
+  const [result, setResult] = useState("")
 
   const handleChange = e => {
     setQuery(e.target.value);
+
     if (e.target.value === "") {
       setSearchShow(false);
     }
     else {
       setSearchShow(true);
+
     }
   };
 
-  const expand = () => {
-    searchBtn.classList.toggle("close");
-    input.classList.toggle("square");
-  };
+  // new line start
 
-  const input = document.getElementById("search-input");
-  const searchBtn = document.getElementById("search-btn");
-  if (searchBtn) {
-    searchBtn.addEventListener("click", expand);
-  }
-
-  // // Execute a function when the user presses a key on the keyboard
-  // searchBtn.addEventListener("keypress", function (event) {
-  //   // If the user presses the "Enter" key on the keyboard
-  //   if (event.key === "Enter") {
-  //     // Cancel the default action, if needed
-  //     event.preventDefault();
-  //     console.log("enter")
-  //     // // Trigger the button element with a click
-  //     // document.getElementById("myBtn").click();
-  //   }
-  // });
+  function getData() {
+    axios({
+      method: "GET",
+      url:`http://127.0.0.1:5000/hello/${query}`,
+    })
+    .then((response) => {
+      
+      const res =response.data
+      setResult(res)
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+        }
+    })};
+    //end of new line 
 
 
   return (
@@ -63,28 +64,28 @@ function Search() {
       onBlur={() => setIsFocused(false)}
       hover={showSearchInput}
     >
-      <SearchInput ref={targetRef} showSearchInput={showSearchInput} onChange={handleChange}/>
+      <SearchInput ref={targetRef} 
+        showSearchInput={showSearchInput} 
+        onChange={handleChange}
+        onKeyPress={event => {
+          if (event.key === 'Enter') {
+      getData();
+
+          }
+        }}
+      />
       {console.log(query)}
       {showSearchInput ? <IconRightArrow /> : <IconMagnifyingGlass />}
     </Container>
+    
 
-      {/* <form id="content">
-        <input type="text" name="input" className="input" id="search-input"  />
-      </form> */}
       {searchShow &&
-        data.filter(entry => {
-          if (query === '') {
-            return entry;
-          } else if (entry.word.toLowerCase().includes(query.toLowerCase())) {
-            return entry;
-          } else {
-            return null;
-          }
-        }).map((entry, index) => (
-          <div className="box" key={index}>
-            <p>{entry.word}</p>
-          </div>
-        ))
+      (
+        <div>
+        {result}
+        </div>
+      )
+ 
       }
 
     </div>

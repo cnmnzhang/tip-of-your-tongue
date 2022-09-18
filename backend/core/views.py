@@ -90,14 +90,13 @@ def transcribe(p):
     return print_transcript(transcript_info)
 
 @app.route("/cats/")
-def cat():
+def cats():
     # Make header
     header = {
-        "authorization": get_cat_api_key(),
-        "content-type": "application/json"
+        "x-api-key": get_cat_api_key()
     }
     res = request_cat(header)
-    return json.dump(res, sys.stderr)
+    return json.dumps(res[0]["url"])
 
 
 def generate_completion_prompt(user_input):

@@ -2,16 +2,39 @@
 import cat from './cat.svg';
 import Search from './components/Search';
 import Audio from './components/Audio';
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
 
 function App() {
 
+  const [catUrl, setCatUrl] = useState("")
 
-  // useEffect(() => {
-  //   fetch("https://api.thecatapi.com/v1/images/search")
-  //   .then(response => response.json())
-  //       // 4. Setting *dogImage* to the image url that we received from the response above
-  //   .then(data => setDogImage(data.message))
-  // },[])
+  useEffect(() => {
+    const intervalID = setTimeout(() =>  {
+      getCat();
+    }, 3000);
+
+    return () => clearInterval(intervalID);
+}, []);
+
+
+  function getCat() {
+    axios({
+      method: "GET",
+      url: `http://127.0.0.1:5000/cats/`,
+    })
+      .then((response) => {
+        const res = response.data
+        setCatUrl(res)
+        console.log(cat)
+      }).catch((error) => {
+        if (error.response) {
+          console.log(error.response)
+          console.log(error.response.status)
+          console.log(error.response.headers)
+        }
+      })
+  };
 
 
   return (
@@ -36,6 +59,7 @@ function App() {
 
       <Audio />
 
+      <img className="App-cat" src={catUrl}/>
 
       </div>
     </div>

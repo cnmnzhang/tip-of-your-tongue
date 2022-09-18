@@ -44,6 +44,12 @@ code {
   color: white;
 }
 
+.App-cat {
+  opacity: 0.6;
+  width: 100px;
+  height: auto;
+}
+
 h1 {
   text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
 }
@@ -58,7 +64,7 @@ p {
 
 .App-text {
   color: white;
-  margin-top: 10vh;
+  margin-top: 20vh;
   position: relative; 
   top: -10px; 
   z-index: 3;

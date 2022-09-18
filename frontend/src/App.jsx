@@ -23,9 +23,9 @@ function App() {
       </header>
 
       <div className="App-body">
-        <Audio />
 
         <Search />
+        <Audio />
 
 
       </div>

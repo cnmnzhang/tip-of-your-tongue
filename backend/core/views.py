@@ -40,7 +40,11 @@ def index(query):
         prompt=generate_completion_prompt(query),
         temperature=0.6,
     )
-    return json.dumps(response.choices[0]["text"])
+    # return json.dumps(response.choices[0]["text"])
+    message = json.dumps(response.choices[0]["text"])[5:-1]
+    next = json.dumps(next_prompt)[1:-1]
+    string = {"message": message, "next": next}
+    return string
 
 
 

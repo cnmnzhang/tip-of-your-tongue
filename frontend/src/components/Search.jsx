@@ -84,7 +84,7 @@ function Search() {
       {searchShow &&
         (
           <div>
-            <Response text={result}/>
+            <Response message={result.message} next={result.next}/>
           </div>
         )
 

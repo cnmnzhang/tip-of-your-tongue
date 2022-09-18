@@ -1,8 +1,12 @@
 import React from 'react'
 
-const Response = ({ text }) => {
+const Response = ({ message, next }) => {
   return (
-    <div className="response">{text}</div>
+    <div>
+    <h1 className="response">{message}</h1>
+    <h2>{next}</h2>
+
+    </div>
   )
 }
 

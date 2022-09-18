@@ -21,37 +21,16 @@ function Search() {
   }, [showSearchInput]);
 
   const [query, setQuery] = useState("")
-  const [result, setResult] = useState("")
+  const [result, setResult] = useState([])
 
-  useEffect(() => {
-    // Update the document title using the browser API
-    function getIntro() {
-      axios({
-        method: "GET",
-        url: `http://127.0.0.1:5000/`,
-      })
-        .then((response) => {
-  
-          const res = response.data
-          setResult(res)
-        }).catch((error) => {
-          if (error.response) {
-            console.log(error.response)
-            console.log(error.response.status)
-            console.log(error.response.headers)
-          }
-        })
-    };
-
-    getIntro();
-
-    setResult(["Can you briefly attempt to define the word?", "Enter '?' if you are unsure."])
-  }, []);
+  // useEffect(() => {
+  //   setResult(["Can you briefly attempt to define the word?", "Enter '?' if you are unsure."])
+  //   console.log(result)
+  // }, []);
 
 
   const handleChange = e => {
     setQuery(e.target.value);
-
   };
 
   // new line start
@@ -62,7 +41,6 @@ function Search() {
       url: `http://127.0.0.1:5000/${query}`,
     })
       .then((response) => {
-
         const res = response.data
         setResult(res)
       }).catch((error) => {
@@ -74,13 +52,19 @@ function Search() {
       })
   };
 
+  function response() {
+    return (
+    <div>
+        <Response message={result.message} next={result.next} />
+      </div>
+    )
+  }
+
 
   return (
     <div>
-        
-          <div>
-            <Response message={result.message} next={result.next}/>
-          </div>
+
+      <p>sdkfskdfnksdjncksdnksdjncksdjnksd</p>
 
       <Container
         onMouseEnter={() => setIsHovered(true)}
@@ -94,16 +78,17 @@ function Search() {
           onChange={handleChange}
           onKeyPress={event => {
             if (event.key === 'Enter') {
+              console.log(query)
               getData();
             }
           }}
         />
-        {console.log(query)}
         {showSearchInput ? <IconRightArrow /> : <IconMagnifyingGlass />}
       </Container>
 
+      {response()}
 
-      
+
 
     </div>
   );

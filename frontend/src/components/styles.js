@@ -6,6 +6,7 @@ export const Container = styled.div`
   position: relative;
   width: 50px;
   height: 50px;
+  margin-left:110px;
   box-sizing: border-box;
   border-radius: 50px;
   border: 4px solid #393e46;
@@ -21,7 +22,7 @@ export const Container = styled.div`
   ${({ hover }) =>
     hover &&
     css`
-      width: 50px;
+      width: 50%;
       -webkit-box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
       box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.74);
       border: 4px solid #00adb5;

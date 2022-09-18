@@ -5,6 +5,15 @@ import Audio from './components/Audio';
 
 function App() {
 
+  // const API_KEY = process.env.CAT_API_KEY
+
+  // useEffect(() => {
+  //   fetch("https://api.thecatapi.com/v1/images/search")
+  //   .then(response => response.json())
+  //       // 4. Setting *dogImage* to the image url that we received from the response above
+  //   .then(data => setDogImage(data.message))
+  // },[])
+
 
   return (
     <div className="App">
@@ -12,11 +21,11 @@ function App() {
         <img src={cat} className="App-logo" alt="logo" />
         <div className="App-text">
 
-        <p>
+        <h2>
           Cat got your tongue?
-        </p>
+        </h2>
         <h1>
-          Tell me what you're thinking
+          We'll help you find it
         </h1>
 
         </div>
@@ -25,7 +34,14 @@ function App() {
       <div className="App-body">
 
         <Search />
-        <Audio />
+
+
+      <p>
+        ... type 'reset' if prompt is being confusing ...
+      </p>
+
+
+      <Audio />
 
 
       </div>

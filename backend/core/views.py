@@ -1,6 +1,7 @@
 import os
 import sys
 from .transcript_funcs import *
+from .cat_funcs import *
 
 import openai
 from flask import Flask, redirect, render_template, request, url_for
@@ -33,7 +34,7 @@ part_of_speech_string = ''
 similar_word_count = 0
 
 
-@app.route("/")
+@app.route("/start")
 def start():
 
     response = openai.Completion.create(
@@ -42,12 +43,12 @@ def start():
         temperature=0.6,
     )
     # return json.dumps(response.choices[0]["text"])
-    message = json.dumps(response.choices[0]["text"])[5:-1]
-    next = json.dumps(next_prompt)[1:-1]
+    message = json.dumps(response.choices[0]["text"])
+    next = json.dumps(next_prompt)
     string = {"message": message, "next": next}
     return string
 
-@app.route("/<query>")
+@app.route("/search/<query>")
 def index(query):
 
     response = openai.Completion.create(
@@ -88,6 +89,15 @@ def transcribe(p):
     # Print transcript
     return print_transcript(transcript_info)
 
+@app.route("/cats/")
+def cat():
+    # Make header
+    header = {
+        "authorization": get_cat_api_key(),
+        "content-type": "application/json"
+    }
+    res = request_cat(header)
+    return json.dump(res, sys.stderr)
 
 
 def generate_completion_prompt(user_input):

@@ -38,11 +38,12 @@ function Search() {
   function getData() {
     axios({
       method: "GET",
-      url: `http://127.0.0.1:5000/${query}`,
+      url: `http://127.0.0.1:5000/search/${query}`,
     })
       .then((response) => {
         const res = response.data
         setResult(res)
+        console.log(result)
       }).catch((error) => {
         if (error.response) {
           console.log(error.response)

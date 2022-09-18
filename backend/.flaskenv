@@ -1,2 +1,3 @@
 FLASK_APP=base.py
 FLASK_ENV=development
+OPENAI_API_KEY=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

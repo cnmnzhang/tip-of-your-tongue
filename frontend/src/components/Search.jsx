@@ -6,6 +6,8 @@ import {
   IconMagnifyingGlass
 } from "./styles";
 
+import Response from "./Response";
+
 import axios from "axios";
 
 function Search() {
@@ -82,7 +84,7 @@ function Search() {
       {searchShow &&
         (
           <div>
-            {result}
+            <Response text={result}/>
           </div>
         )
 

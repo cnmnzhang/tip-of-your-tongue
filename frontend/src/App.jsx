@@ -17,10 +17,11 @@ function App() {
           Let's figure this out
         </h1>
         <Audio />
+
+        <Search />
       </header>
 
       <div className="App-body">
-        <Search />
 
 
       </div>

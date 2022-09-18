@@ -46,6 +46,9 @@ code {
 .App-text {
   color: white;
   margin-top: 10vh;
+  position: relative; 
+  top: -10px; 
+  z-index: 3;
 }
 
 .App-body {

@@ -1,5 +1,6 @@
 import os
 import sys
+from .transcript_funcs import *
 
 import openai
 from flask import Flask, redirect, render_template, request, url_for
@@ -59,6 +60,33 @@ def index(query):
     next = json.dumps(next_prompt)[1:-1]
     string = {"message": message, "next": next}
     return string
+
+@app.route("/transcribe/<p>")
+def transcribe(p):
+
+    # Make header
+    header = {
+        "authorization": get_api_key(),
+        "content-type": "application/json"
+    }
+
+    download_num = 1
+
+    # Upload file
+    # upload_url = functions.upload_file("C:/Users/aelde/Documents/Speech-to-Text/it-sounds-like.mp3", header)
+    upload_url = upload_file("C:/Users/aelde/Downloads/" + p, header)
+    # increment_file()
+
+    # Request transcription
+    transcript_response = request_transcript(upload_url, "en_us", header)
+    # transcript_response = url_request_transcript("en_us", header)
+
+    # Request status from API until complete
+    status_req_endpt = status_req_endpoint(transcript_response)
+    transcript_info = wait_for_completion(status_req_endpt, header)
+
+    # Print transcript
+    return print_transcript(transcript_info)
 
 
 

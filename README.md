@@ -50,5 +50,11 @@ To work with spacy vectors, you need to download the vectors (after installing s
 $ python -m spacy download en_core_web_lg
 ```
 
+necessary pips
+```
+pip install -U flask-cors
+```
+
+
 cat logo from [freesvg](https://freesvg.org/cat-silhouette-vector)
 

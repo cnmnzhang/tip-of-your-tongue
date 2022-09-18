@@ -9,7 +9,7 @@ export const Container = styled.div`
   margin-left:110px;
   box-sizing: border-box;
   border-radius: 50px;
-  border: 4px solid #393e46;
+  border: 4px solid #ff960a;
   padding: 5px;
   background: #222831;
   transition: all 0.5s;
@@ -67,7 +67,7 @@ const fadeIn = keyframes`
 const IconCommonCss = css`
   height: 1.25rem;
   width: 1.25rem;
-  fill: #00adb5;
+  fill: #ff960a;
   z-index: 10;
   animation: ${fadeIn} 1s linear;
 `;
@@ -81,6 +81,6 @@ export const IconRightArrow = styled(ArrowRightIcon)`
   align-self: flex-end;
   cursor: pointer;
   &:hover {
-    fill: #393e46;
+    fill: #ffb452;
   }
 `;

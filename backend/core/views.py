@@ -6,6 +6,7 @@ from flask import Flask, redirect, render_template, request, url_for
 from core import app
 from datetime import datetime
 import re
+import json
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
@@ -31,6 +32,17 @@ part_of_speech_string = ''
 similar_word_count = 0
 
 
+@app.route("/<query>")
+def index(query):
+
+    response = openai.Completion.create(
+        model="text-davinci-002",
+        prompt=generate_completion_prompt(query),
+        temperature=0.6,
+    )
+    return json.dumps(response.choices[0]["text"])
+
+
 @app.route("/", methods=("GET", "POST"))
 def index():
 
@@ -45,7 +57,6 @@ def index():
 
     result = request.args.get("result")
     return render_template("index.html", result=result,name=next_prompt)
-    #return result
 
 
 def generate_completion_prompt(user_input):

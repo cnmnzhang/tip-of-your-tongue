@@ -64,7 +64,9 @@ function Search() {
   return (
     <div>
 
-      <p>... type 'reset' if prompt is being confusing ...</p>
+<p>
+        ... type 'reset' if prompt is being confusing ...
+      </p>
 
       <Container
         onMouseEnter={() => setIsHovered(true)}

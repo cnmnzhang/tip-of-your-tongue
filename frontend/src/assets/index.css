@@ -23,7 +23,7 @@ code {
   position: absolute;
   z-index: 2;
   margin-top: 25vmin;
-  left: 10vmin;
+  left: 15vmin;
   opacity: 0.2;
 }
 
@@ -121,4 +121,8 @@ p {
 .response {
   margin: 20px;
 
+}
+
+.audio-output {
+  margin: 10px;
 }

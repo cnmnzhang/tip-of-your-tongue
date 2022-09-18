@@ -91,7 +91,10 @@ import MicRecorder from 'mic-recorder-to-mp3'
         <button onClick={this.stop} disabled={!this.state.isRecording}>
           Stop
         </button>
-        <audio src={this.state.blobURL} controls="controls" />
+        <div>
+        <audio className="audio-output" src={this.state.blobURL} controls="controls" />
+
+        </div>
       </div>
       )
     
